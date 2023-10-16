@@ -1,0 +1,4 @@
+::ng-deep .active {
+    color: green; /* Set your desired color here */
+    /* You can also add other styles for the active state if needed */
+  }

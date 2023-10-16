@@ -1,0 +1,16 @@
+.top{
+    border-top: 5px solid brown;
+    background-color: rgb(110, 110, 250);
+    height: 250px;
+}
+h2 {
+    font-family: 'Goldman', sans-serif; /* 'sans-serif' is a fallback font */
+  }
+
+  .label{
+    font-family: 'Goldman', sans-serif; /* 'sans-serif' is a fallback font */
+    font-size: 15px;
+  }
+  input::placeholder {
+    font-size: 13px; /* Adjust the font size as needed */
+  }

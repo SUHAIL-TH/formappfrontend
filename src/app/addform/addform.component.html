@@ -1,0 +1,124 @@
+<app-navbar></app-navbar>
+<div class="contain" >
+
+    <div class="center-content">
+        <h1 style="color: rgb(253, 104, 4);font-weight: bolder; font-size: 40px; text-shadow: 0px 1px 1px black;  font-family: 'Goldman', sans-serif;" >Build Form</h1>
+        <small style="color: white;">Make your dream come true</small>
+    </div>
+   
+  </div>
+ <div style="background-color: rgb(250, 234, 237);">
+  <div class="container" >
+    <form >
+      <div class="row mt-4">
+        
+        <label for="" class="mt-2" style="font-weight:bold ; text-shadow: 0px 1px 1px rgb(123, 123, 123); font-family: 'Goldman', sans-serif;" >Discription<span class="text-danger">*</span></label>
+        <textarea placeholder="Enter the form discription"  name="discription" [(ngModel)]="descrsiption"  style='box-shadow: 0px 1px 4px black;' id="" class=" mt-1 form-control "col="5" rows="4"></textarea>
+        <small *ngIf="discriptionerror" style="color: red;">Please enter the discription</small>
+      </div>
+    </form>
+    <div class="content mt-5 mb-2">
+      <div class="new-field">
+    
+
+        
+
+        <div class="row mt-2" style="box-shadow: 0px 1px 2px black; background-color: white; border-radius: 10px;">
+          <div class="col-md-6 ">
+            <label for="" style="font-weight:bold ; text-shadow: 0px 1px 1px rgb(123, 123, 123); font-family: 'Goldman', sans-serif;">Enter the question? <span class="text-danger">*</span></label>
+            <input type="text" [(ngModel)] = "fieldName" class="form-control mt-2" placeholder="Enter the question?" style="box-shadow: 0px 1px 4px black;">
+            <div>
+
+              <small *ngIf="formerror" style="color: red;">Please fill the field and add</small>
+            </div>
+            <input type='checkbox' [(ngModel)]="requied" name="requied" class="mt-1"><label for="" style="color: rgb(0, 0, 0); font-weight: bold; font-family: 'Goldman', sans-serif;" class="mt-1">required</label>
+          </div>
+      
+          <div class="col-md-6">
+            <label for="" style="font-weight:bold ; text-shadow: 0px 1px 1px rgb(123, 123, 123); font-family: 'Goldman', sans-serif;">Select the type</label>
+            
+            <select class="form-select mt-2" [(ngModel)]="type"  (change)="typeChagne()" style="box-shadow: 0px 1px 4px black;  font-family: 'Goldman', sans-serif;" [value]="type" aria-label="Default select example">
+              
+              <option value="text" selected style=" font-family: 'Goldman', sans-serif;">text</option>
+              <option value="radio" style=" font-family: 'Goldman', sans-serif;">Radio</option>
+              <option value="checkbox" style=" font-family: 'Goldman', sans-serif;">Checkbox</option>
+              <option value="dropdown" style=" font-family: 'Goldman', sans-serif;">Dropdown</option>
+            </select>
+            
+            
+          </div>
+          <div class="d-flex justify-content-end mt-2 mb-2">
+            <div class="flex-grow-1"></div>
+            <div class="form-group">
+                <button mat-raised-button color="warn" (click)="add()" >Add Field</button>
+            </div>
+          </div>
+          <div class="options-field mb-2" *ngIf="optionsData">
+            <div class="new-option col-md-6 mt-2">
+                <div class="inputs d-flex">
+                    <input type="text" class="form-control" [(ngModel)]="option" placeholder="options " style='box-shadow: 0px 1px 5px black;'>
+                    <button class="btn-sm btn btn-success ms-1" (click)="addOption()">Add</button>
+                </div>
+            </div>
+            <div class="options" *ngFor="let option of options,">
+                <p style=" font-family: 'Goldman', sans-serif;">options = {{option}}</p>
+            </div>
+        </div>
+          
+        </div>
+      </div>
+     
+      <hr>
+      <div class="already-field mt-2" *ngIf="data.length != 0" style="box-shadow: 0px 1px 5px black; border-radius: 10px; background-color: white;" >
+        <h4 class=" " style="color: brown; font-weight: bold;  font-family: 'Goldman', sans-serif;">Questions</h4>
+        <div class="container">
+
+          <ng-container *ngFor="let item of data, let i = index">
+              <div class="options-data mt-2">
+                  <p>{{item.fieldName}}</p>
+                  <p *ngIf="item.type==='radio'">
+                      <label name="" id="" *ngIf="item.option?.length">
+                          <ng-container *ngFor="let option of item.option">
+                              
+                              <input class="ms-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                              <label class="form-check-label" for="flexRadioDefault2">
+                               {{option}}
+                              </label>
+                          </ng-container>
+                        </label>
+                  </p>
+                  <div *ngIf="item.type==='checkbox'" class="form-check-inline">
+                    <ng-container  *ngFor="let option of item.option" >
+                      <input class="form-check-input ms-3" type="checkbox" value="" id="flexCheckChecked" >
+                      <label class="form-check-label" for="flexCheckChecked">
+                       {{option}}
+                      </label>
+                    </ng-container>
+                  
+                  </div>
+                  <div *ngIf="item.type==='dropdown'" class="form-check-inline">
+                    <select name="" id="" *ngIf="item.option?.length" class="form-select" >
+                      <!-- <select class="form-select mt-2" *ngIf="item.option?.length" style="box-shadow: 0px 1px 4px black;"  aria-label="Default select example"> -->
+                      <ng-container *ngFor="let option of item.option">
+                          <option value="{{option}}">{{option}}</option>
+                      </ng-container>
+                  </select>
+
+                </div>
+                <button mat-fab color="primary" aria-label="Delete" (click)="deleteField(item.fieldName, i)" *ngIf="item.fieldName" style="width: 24px; height: 24px;">
+                  <mat-icon style="font-size: 16px;">delete</mat-icon>
+                </button>
+                
+               
+              </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <!-- <button mat-raised-button color="primary" class="mt-5 mb-3" (click)="submit()" >Submit </button> -->
+    <button class="mb-2" mat-raised-button color="primary" (click)="openSnackBar('Form Added', '')">Submit</button>
+
+
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,70 @@
+<div>
+  <div class="top">
+    <div class="container" style="box-shadow: 0px 1px 5px black; margin-top: 100px; height: auto; background-color: white; border-top: 5px green; " >
+      <div style="margin-left: 100px; ">
+
+        <div class="heading " style="padding-top: 50px; ">
+            <h2  >{{formFields?.discription}}</h2>
+        </div>
+        <div class="form ">
+          <hr>
+          <form [formGroup]="form"  (ngSubmit)="submit()">
+            <div *ngFor="let field of formFieldsArray" class="mt-3">
+              <label class="label">{{ field.fieldName }} 
+                <label for="" *ngIf="field.requied" style="color: red;">*</label>
+              </label>
+              <div *ngIf="field.type === 'text'" class="mt-2">
+                <input type="text "  class="form-control" [formControlName]="field.fieldName" placeholder="Please fill the field">
+                <div class="mt-2" *ngIf=" field.type === 'text' &&form.get(field.fieldName)?.hasError('required') && ressubmit" style="color: red;" ><small>  This field is required.</small>
+                
+                </div>
+              </div>
+              <div *ngIf="field.type === 'checkbox'">
+                <div *ngFor="let option of field.option; let i = index">
+                  <label >
+                    <input type="checkbox" [formControlName]="field.fieldName"  [value]="option" />
+                    <!-- (change)="onChange($event, field.fieldName)" -->
+                    <small class="ms-1" style="font-family: 'Goldman', sans-serif;">{{ option }}</small> 
+                  </label>
+                </div>
+              </div>
+              <div *ngIf=" field.type === 'checkbox' && form.get(field.fieldName)?.hasError('required') && ressubmit" class="mt-2" style="color: red;">
+                <small>This field is required.</small>
+              </div>
+              
+              <div *ngIf="field.type === 'radio'">
+                <div *ngFor="let option of field.option">
+                  <label >
+                    <input type="radio" [formControlName]="field.fieldName" [value]="option" >
+                   <small class="ms-1" style="font-family: 'Goldman', sans-serif;">{{ option }}</small> 
+                  </label>
+                </div>
+              </div>
+              <div *ngIf=" field.type === 'radio' &&form.get(field.fieldName)?.hasError('required') && ressubmit" class="mt-2" style="color: red;">
+                <small>This field is required.</small>
+              </div>
+              <div *ngIf="field.type === 'dropdown'">
+                <div>
+                  <select [formControlName]="field.fieldName" class="form-select mt-2" style="box-shadow: 0px 1px 4px black;" aria-label="Default select example">
+                    
+                    <option *ngFor="let option of field.option" [value]="option" selected style=" font-family: 'Goldman', sans-serif;">{{ option }}</option>
+                  </select>
+                </div>
+              </div>
+              <div *ngIf="field.type === 'dropdown' && form.get(field.fieldName)?.hasError('required') && ressubmit" class="mt-2" style="color: red;">
+                <small>This field is required.</small>
+              </div>
+              <!-- Add more conditions for other field types if needed -->
+            </div>
+            <div class="rew">
+              <input type="button" class="btn btn-danger btn sm  " value="Cancel"  routerLink="/">
+              <button class="mb-5 mt-5 ms-3" mat-raised-button color="primary"   type="submit">Submit</button>
+            </div>
+            
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

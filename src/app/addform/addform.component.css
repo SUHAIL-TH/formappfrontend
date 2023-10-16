@@ -1,0 +1,29 @@
+.contain {
+  
+    background-image: url('../../assets/images/beautiful-nature-landscape-with-mountains-lake.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    
+  }
+  .center-content {
+    text-align: center;
+  }
+  .center-content button {
+    margin: auto;
+  }
+  input::placeholder {
+    font-size: 13px;
+    font-family: 'Goldman', sans-serif;
+  }
+  textarea::placeholder {
+    font-size: 13px;
+    font-family: 'Goldman', sans-serif;
+  }
+ 
+
