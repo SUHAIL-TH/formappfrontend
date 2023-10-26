@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 })
 export class FormlistComponent implements OnInit {
   forms:any
+  loading : boolean = true
   constructor(private http:HttpClient,private service:ApiserviceService,private router:Router){}
   ngOnInit(): void {
     this.service.getfroms().subscribe((res)=>{
       this.forms=res
-      
+      this.loading = false
     })
   }
   submit(id:string){

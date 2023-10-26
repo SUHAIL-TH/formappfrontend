@@ -1,45 +1,48 @@
-<app-navbar></app-navbar>
-<div style="background-color: rgb(36, 36, 36); height: 150px; display: flex; justify-content: center; align-items: center;">
-  <h1 style=" font-family: 'Goldman', sans-serif; font-size: 40px;"  class="gradient-text">FORMS LIST</h1>
-</div>
-<div class="container-fluid" style="min-height: 70vh;">
-  
-    <div class="row px-xl-5 mt-5">
-        <div class="d-flex justify-content-end">
-            <div class="flex-grow-1"></div>
-            <div class="form-group">
-                <button mat-raised-button color="warn" routerLink="/addform">Add Form</button>
-            </div>
-          </div>
-      
-      <div class="col-md-12 mt-3">
-        <h4 style="color: rgb(0, 0, 0);" *ngIf="false">.....</h4>
-        <div class="table-responsive"  style="box-shadow: 0px 1px 1px black; border-radius: 10px;">
-          <table class="table align-middle mb-0 bg-white">
-              <thead class="bg-light" style="background-color: rgb(227, 226, 226);">
-                <tr style="background-color: rgb(238, 232, 232);">
-                  <th class="">No</th>
-                  <th>Disctiption</th>
-                  <!-- <th>Responses</th> -->
-                  <th>Action</th>
-                
-                </tr>
-              </thead>
-              <tbody >
-                <tr  *ngFor="let data of  forms; 
-                let i=index">
-                <td style="font-family: monospace;">{{i+1}}</td>
-                <td style="font-family: monospace;">{{data.discription}}</td>
-                <!-- <th> <button mat-raised-button color="warn" (click)="response(data._id)">Open</button> </th> -->
-                <th><button mat-raised-button color="primary" (click)="submit(data._id)">Click</button></th>
-               
-
-                </tr>
-                
-              </tbody>
-          </table>
-        </div>
-      </div>
-   </div>
+  <app-navbar></app-navbar>
+  <div style="background-color: rgb(36, 36, 36); height: 150px; display: flex; justify-content: center; align-items: center;">
+    <h1 style=" font-family: 'Goldman', sans-serif; font-size: 40px;"  class="gradient-text">FORMS LIST</h1>
   </div>
-  <app-footer></app-footer>
+  <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<ng-container *ngIf="!loading">
+  
+  <div class="container-fluid" style="min-height: 70vh;">
+    
+      <div class="row px-xl-5 mt-5">
+          <div class="d-flex justify-content-end">
+              <div class="flex-grow-1"></div>
+              <div class="form-group">
+                  <button mat-raised-button color="warn" routerLink="/addform">Add Form</button>
+              </div>
+            </div>
+        
+        <div class="col-md-12 mt-3">
+          <h4 style="color: rgb(0, 0, 0);" *ngIf="false">.....</h4>
+          <div class="table-responsive"  style="box-shadow: 0px 1px 1px black; border-radius: 10px;">
+            <table class="table align-middle mb-0 bg-white">
+                <thead class="bg-light" style="background-color: rgb(227, 226, 226);">
+                  <tr style="background-color: rgb(238, 232, 232);">
+                    <th class="">No</th>
+                    <th>Disctiption</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr  *ngFor="let data of  forms; 
+                  let i=index">
+                  <td style="font-family: monospace;">{{i+1}}</td>
+                  <td style="font-family: monospace;">{{data.discription}}</td>
+                  <!-- <th> <button mat-raised-button color="warn" (click)="response(data._id)">Open</button> </th> -->
+                  <th><button mat-raised-button color="primary" (click)="submit(data._id)">Click</button></th>
+                 
+  
+                  </tr>
+                  
+                </tbody>
+            </table>
+          </div>
+        </div>
+     </div>
+    </div>
+    <app-footer></app-footer>
+</ng-container>
+

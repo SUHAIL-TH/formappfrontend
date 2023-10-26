@@ -6,12 +6,14 @@ import { AddformComponent } from './addform/addform.component';
 import { FormlistComponent } from './formlist/formlist.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { FormresponseComponent } from './formresponse/formresponse.component';
+import { SubmitsuccessComponent } from './submitsuccess/submitsuccess.component';
 const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"forms",component:FormlistComponent},
   {path:"addform",component:AddformComponent},
   {path:"singleform/:id",component:FormComponent},
   {path:'response/:id',component:FormresponseComponent},
+  {path:"formsubmitsuccess",component:SubmitsuccessComponent},
   {path:"**",component:PagenotfoundComponent}
 ];
 

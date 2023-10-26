@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { FormresponseComponent } from './formresponse/formresponse.component';
+import { SubmitsuccessComponent } from './submitsuccess/submitsuccess.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -32,7 +34,8 @@ import { FormresponseComponent } from './formresponse/formresponse.component';
     NavbarComponent,
     FooterComponent,
     PagenotfoundComponent,
-    FormresponseComponent
+    FormresponseComponent,
+    SubmitsuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,8 @@ import { FormresponseComponent } from './formresponse/formresponse.component';
     closeButton: true, }),
     HttpClientModule,
     MatSnackBarModule,
+
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

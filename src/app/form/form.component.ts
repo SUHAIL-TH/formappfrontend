@@ -78,7 +78,7 @@ export class FormComponent implements OnInit {
       };
 
       this.service.addresponse(response).subscribe((res) => {
-        this.router.navigate(['/forms']);
+        this.router.navigate(['/formsubmitsuccess']);
       });
     }
   }
